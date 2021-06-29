@@ -26,50 +26,63 @@ class DefaultTemplate extends StatelessWidget {
             },
           ),
           // screen size type을  위젯에 넘겨줌
-          Obx(
-            () => Scaffold(
-              key: _key,
-              drawer: Container(
-                color: Colors.white,
-                width: Get.size.width * 0.7,
-                child: Container(
-                  margin: const EdgeInsets.only(top: 50, left: 20),
-                  child: RightMenu(),
-                ),
-              ),
-              body: Container(
-                alignment: Alignment.topCenter,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 1280),
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              _key.currentState!.openDrawer();
-                            },
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              child: Icon(Icons.menu),
-                            ),
-                          ),
-                          // widget 별로 사이즈 상태 넘겨줌
-                          NavigationMenu(ScreenLayoutController.to.type.value),
-                        ],
-                      ),
-                      Expanded(
-                        child: _contentsView(),
-                      ),
-                      Footer(),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+          Obx(() {
+            switch (ScreenLayoutController.to.type.value) {
+              case ScreenSizeType.MOBILE:
+                return _layout(hasDrawer: true);
+              case ScreenSizeType.TABLET:
+              case ScreenSizeType.DESKTOP:
+              default:
+                return _layout();
+            }
+          }),
         ],
+      ),
+    );
+  }
+
+  Widget _layout({bool hasDrawer = false}) {
+    return Scaffold(
+      key: _key,
+      drawer: hasDrawer
+          ? Container(
+              color: Colors.white,
+              width: Get.size.width * 0.7,
+              child: Container(
+                margin: const EdgeInsets.only(top: 50, left: 20),
+                child: RightMenu(),
+              ),
+            )
+          : null,
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 1280),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      _key.currentState!.openDrawer();
+                    },
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      child: Icon(Icons.menu),
+                    ),
+                  ),
+                  // widget 별로 사이즈 상태 넘겨줌
+                  NavigationMenu(ScreenLayoutController.to.type.value),
+                ],
+              ),
+              Expanded(
+                child: _contentsView(),
+              ),
+              Footer(),
+            ],
+          ),
+        ),
       ),
     );
   }
