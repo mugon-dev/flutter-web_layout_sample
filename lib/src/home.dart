@@ -8,7 +8,9 @@ import 'package:layout_sample/src/pages/root_page.dart';
 import 'components/navigation_menu.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  // drawer open event를 위해 key 등록 필요
+  final GlobalKey<ScaffoldState> _key = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class HomePage extends StatelessWidget {
           // screen size type을  위젯에 넘겨줌
           Obx(
             () => Scaffold(
+              key: _key,
               drawer: Container(
                 color: Colors.white,
                 width: Get.size.width * 0.7,
@@ -42,8 +45,22 @@ class HomePage extends StatelessWidget {
                   constraints: BoxConstraints(maxWidth: 1280),
                   child: Column(
                     children: [
-                      // widget 별로 사이즈 상태 넘겨줌
-                      NavigationMenu(ScreenLayoutController.to.type.value),
+                      Stack(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              _key.currentState!.openDrawer();
+                            },
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              child: Icon(Icons.menu),
+                            ),
+                          ),
+                          // widget 별로 사이즈 상태 넘겨줌
+                          NavigationMenu(ScreenLayoutController.to.type.value),
+                        ],
+                      ),
                       Expanded(
                           child:
                               RootPage(ScreenLayoutController.to.type.value)),
