@@ -28,7 +28,13 @@ class MyApp extends StatelessWidget {
       initialBinding: BindingsBuilder(() {
         Get.put(ScreenLayoutController());
       }),
-      home: HomePage(),
+      initialRoute: "/",
+      getPages: [
+        GetPage(
+          name: "/",
+          page: () => HomePage(),
+        )
+      ],
     );
   }
 }

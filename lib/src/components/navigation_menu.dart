@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:layout_sample/src/controller/screen_layout_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NavigationMenu extends StatelessWidget {
   final ScreenSizeType screenSizeType;
@@ -26,13 +28,7 @@ class NavigationMenu extends StatelessWidget {
             "assets/images/logo.jpeg",
             width: 80,
           ),
-          Row(
-            children: [
-              menu("home", () {}),
-              menu("blog", () {}),
-              menu("youtube", () {}),
-            ],
-          ),
+          _menuGroup(),
         ],
       ),
     );
@@ -47,16 +43,26 @@ class NavigationMenu extends StatelessWidget {
             width: 80,
           ),
           SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              menu("home", () {}),
-              menu("blog", () {}),
-              menu("youtube", () {}),
-            ],
-          ),
+          _menuGroup(),
         ],
       ),
+    );
+  }
+
+  Row _menuGroup() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        menu("home", () {
+          Get.toNamed("/");
+        }),
+        menu("blog", () {
+          launch("https://mugon-devlog.tistory.com/");
+        }),
+        menu("youtube", () {
+          launch("https://www.youtube.com/watch?v=IiuZeMXBGNU");
+        }),
+      ],
     );
   }
 
