@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:layout_sample/src/controller/screen_layout_controller.dart';
 
 class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({Key? key}) : super(key: key);
+  final ScreenSizeType screenSizeType;
+  const NavigationMenu(this.screenSizeType, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    switch (screenSizeType) {
+      case ScreenSizeType.MOBILE:
+        return _mobileLayout();
+      case ScreenSizeType.TABLET:
+        return _desktopLayout();
+      case ScreenSizeType.DESKTOP:
+        return _desktopLayout();
+    }
+  }
+
+  Widget _desktopLayout() {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -14,6 +27,28 @@ class NavigationMenu extends StatelessWidget {
             width: 80,
           ),
           Row(
+            children: [
+              menu("home", () {}),
+              menu("blog", () {}),
+              menu("youtube", () {}),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _mobileLayout() {
+    return Container(
+      child: Column(
+        children: [
+          Image.asset(
+            "assets/images/logo.jpeg",
+            width: 80,
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               menu("home", () {}),
               menu("blog", () {}),
