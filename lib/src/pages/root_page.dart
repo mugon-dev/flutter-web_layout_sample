@@ -8,6 +8,7 @@ class RootPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(child: _contents()),
           SizedBox(width: 40),

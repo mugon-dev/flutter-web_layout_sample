@@ -10,18 +10,36 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1280),
-          child: Column(
-            children: [
-              NavigationMenu(),
-              Expanded(child: RootPage()),
-              Footer(),
-            ],
-          ),
-        ),
+      // size 별 레이아웃 설정
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          // size별 처리
+
+          if (constraints.biggest.width < 480) {
+            // mobile size
+            print("mobile");
+          }
+
+          if (constraints.biggest.width > 480 &&
+              constraints.biggest.width < 768) {
+            // tablet
+            print("tablet");
+          }
+          // desktop
+          return Container(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 1280),
+              child: Column(
+                children: [
+                  NavigationMenu(),
+                  Expanded(child: RootPage()),
+                  Footer(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
