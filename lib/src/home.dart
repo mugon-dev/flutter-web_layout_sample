@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:layout_sample/src/pages/root_page.dart';
 
 import 'components/navigation_menu.dart';
 
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
           children: [
             NavigationMenu(),
             Expanded(
-              child: _contents(),
+              child: RootPage(),
             ),
             _footer(),
           ],
