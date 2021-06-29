@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:layout_sample/src/controller/screen_layout_controller.dart';
-import 'package:layout_sample/src/home.dart';
+import 'package:layout_sample/src/pages/flutter_page.dart';
+import 'package:layout_sample/src/pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,6 +34,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/",
           page: () => HomePage(),
+        ),
+        GetPage(
+          name: "/flutter",
+          page: () => FlutterPage(),
         )
       ],
     );

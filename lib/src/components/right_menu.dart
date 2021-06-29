@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:layout_sample/src/controller/screen_layout_controller.dart';
 
 class RightMenu extends StatelessWidget {
@@ -19,7 +20,9 @@ class RightMenu extends StatelessWidget {
             "대메뉴1",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
-          _sideMenu("메뉴1", () {}),
+          _sideMenu("메뉴1", () {
+            Get.toNamed("/flutter");
+          }),
           _sideMenu("메뉴2", () {}),
           _sideMenu("메뉴3", () {}),
           _sideMenu("메뉴4", () {}),

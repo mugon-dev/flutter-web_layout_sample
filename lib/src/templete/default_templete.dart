@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:layout_sample/src/components/footer.dart';
+import 'package:layout_sample/src/components/navigation_menu.dart';
 import 'package:layout_sample/src/components/right_menu.dart';
 import 'package:layout_sample/src/controller/screen_layout_controller.dart';
-import 'package:layout_sample/src/pages/root_page.dart';
 
-import 'components/navigation_menu.dart';
-
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-  // drawer open event를 위해 key 등록 필요
+class DefaultTemplate extends StatelessWidget {
+  Widget contents;
   final GlobalKey<ScaffoldState> _key = new GlobalKey<ScaffoldState>();
+  DefaultTemplate(this.contents);
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +60,8 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                       Expanded(
-                          child:
-                              RootPage(ScreenLayoutController.to.type.value)),
+                        child: contents,
+                      ),
                       Footer(),
                     ],
                   ),
@@ -75,6 +73,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  // tip
-  // placeholder를 사용하면 차지하는 영역을 확인 가능
 }
