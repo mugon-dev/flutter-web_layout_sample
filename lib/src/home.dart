@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components/navigation_menu.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            _header(),
+            NavigationMenu(),
             Expanded(
               child: _contents(),
             ),
@@ -30,11 +32,5 @@ class HomePage extends StatelessWidget {
 
   Widget _contents() {
     return Placeholder();
-  }
-
-  Widget _header() {
-    return Placeholder(
-      fallbackHeight: 80,
-    );
   }
 }
