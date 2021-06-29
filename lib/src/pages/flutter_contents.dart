@@ -25,7 +25,7 @@ class FlutterContents extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(child: _contents()),
-          RightMenu(screenSizeType),
+          RightMenu(),
         ],
       ),
     );
@@ -38,7 +38,7 @@ class FlutterContents extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(child: _contents()),
-          RightMenu(screenSizeType, width: 100.0),
+          RightMenu(width: 100.0),
         ],
       ),
     );

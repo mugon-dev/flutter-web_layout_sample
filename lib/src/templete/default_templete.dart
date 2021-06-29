@@ -34,7 +34,7 @@ class DefaultTemplate extends StatelessWidget {
                 width: Get.size.width * 0.7,
                 child: Container(
                   margin: const EdgeInsets.only(top: 50, left: 20),
-                  child: RightMenu(ScreenLayoutController.to.type.value),
+                  child: RightMenu(),
                 ),
               ),
               body: Container(
@@ -60,7 +60,7 @@ class DefaultTemplate extends StatelessWidget {
                         ],
                       ),
                       Expanded(
-                        child: contents,
+                        child: _contentsView(),
                       ),
                       Footer(),
                     ],
@@ -70,6 +70,23 @@ class DefaultTemplate extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _contentsView() {
+    List<Widget> list = [Expanded(child: contents)];
+    if (ScreenLayoutController.to.type.value != ScreenSizeType.MOBILE) {
+      list.add(RightMenu(
+          width: ScreenLayoutController.to.type.value == ScreenSizeType.TABLET
+              ? 100
+              : 150));
+    }
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: list,
       ),
     );
   }

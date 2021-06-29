@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:layout_sample/src/controller/screen_layout_controller.dart';
 
 class RightMenu extends StatelessWidget {
   final double width;
-  final ScreenSizeType screenSizeType;
-  const RightMenu(this.screenSizeType, {this.width = 150.0, Key? key})
-      : super(key: key);
+  const RightMenu({this.width = 150.0, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

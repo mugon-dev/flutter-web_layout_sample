@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:layout_sample/src/controller/screen_layout_controller.dart';
 import 'package:layout_sample/src/pages/root_contents.dart';
 import 'package:layout_sample/src/templete/default_templete.dart';
 
@@ -11,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTemplate(
-      RootContents(ScreenLayoutController.to.type.value),
+      RootContents(),
     );
     // return Scaffold(
     //   // size 별 레이아웃 설정
