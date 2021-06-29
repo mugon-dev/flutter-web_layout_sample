@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:layout_sample/src/components/footer.dart';
 import 'package:layout_sample/src/pages/root_page.dart';
 
 import 'components/navigation_menu.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: RootPage(),
             ),
-            _footer(),
+            Footer(),
           ],
         ),
       ),
@@ -24,14 +25,4 @@ class HomePage extends StatelessWidget {
   }
   // tip
   // placeholder를 사용하면 차지하는 영역을 확인 가능
-
-  Widget _footer() {
-    return Placeholder(
-      fallbackHeight: 80,
-    );
-  }
-
-  Widget _contents() {
-    return Placeholder();
-  }
 }
