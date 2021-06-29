@@ -11,14 +11,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
-          children: [
-            NavigationMenu(),
-            Expanded(
-              child: RootPage(),
-            ),
-            Footer(),
-          ],
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 1280),
+          child: Column(
+            children: [
+              NavigationMenu(),
+              Expanded(child: RootPage()),
+              Footer(),
+            ],
+          ),
         ),
       ),
     );
